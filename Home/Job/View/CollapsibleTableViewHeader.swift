@@ -11,6 +11,7 @@ import UIKit
 
 protocol CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int)
+    func headerViewSelected(_ header: CollapsibleTableViewHeader,section: Int)
 }
 
 class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
@@ -154,11 +155,10 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
     }
     
     @objc func tapHeader(_ gestureRecognizer: UITapGestureRecognizer) {
-        //        guard let cell = gestureRecognizer.view as? CollapsibleTableViewHeader else {
-        //            return
-        //        }
-        //
-        //        delegate?.toggleSection(self, section: cell.section)
+        guard let cell = gestureRecognizer.view as? CollapsibleTableViewHeader else {
+            return
+        }
+        delegate?.headerViewSelected(self, section: cell.section)
     }
     
     func setCollapsed(_ collapsed: Bool) {
@@ -171,7 +171,7 @@ class CollapsibleTableViewHeader: UITableViewHeaderFooterView {
                 return
             }
             name.text = model.company
-            fee.text = "推荐费" + model.premium!
+            fee.text = "推荐费\(model.premium ?? "")"
             category.text = model.job
             salary.text = model.compensation
             companyTag.setTitle("免费班车", for: .normal)

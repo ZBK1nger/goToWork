@@ -130,7 +130,7 @@ class CompanyListTableViewCell: UITableViewCell {
                 return
             }
             name.text = model.company
-            fee.text = "推荐费" + model.premium!
+            fee.text = "推荐费\(model.premium ?? "")"
             category.text = model.job
             salary.text = model.compensation
             companyTag.setTitle("免费班车", for: .normal)

@@ -46,6 +46,10 @@
 		9EC7121D215142B2006BBC4B /* UIColor+KLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC71218215142B2006BBC4B /* UIColor+KLExtension.swift */; };
 		9EC7121E215142B2006BBC4B /* UIView+KLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC71219215142B2006BBC4B /* UIView+KLExtension.swift */; };
 		9EC712212151499B006BBC4B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC712202151499B006BBC4B /* LocationManager.swift */; };
+		9EC7122321521F83006BBC4B /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7122221521F83006BBC4B /* Extension+UIButton.swift */; };
+		9EC7122521524B03006BBC4B /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7122421524B03006BBC4B /* JobDetailViewController.swift */; };
+		9EE7E08C21537075005BC791 /* JobDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7E08B21537075005BC791 /* JobDetailTableViewCell.swift */; };
+		9EE7E0912154E6D5005BC791 /* LablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7E0902154E6D5005BC791 /* LablePadding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +117,10 @@
 		9EC71218215142B2006BBC4B /* UIColor+KLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+KLExtension.swift"; sourceTree = "<group>"; };
 		9EC71219215142B2006BBC4B /* UIView+KLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+KLExtension.swift"; sourceTree = "<group>"; };
 		9EC712202151499B006BBC4B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9EC7122221521F83006BBC4B /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
+		9EC7122421524B03006BBC4B /* JobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
+		9EE7E08B21537075005BC791 /* JobDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailTableViewCell.swift; sourceTree = "<group>"; };
+		9EE7E0902154E6D5005BC791 /* LablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LablePadding.swift; sourceTree = "<group>"; };
 		D6FB12D5D4AFA25174B43F02 /* Pods-goToWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goToWork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-goToWork/Pods-goToWork.debug.xcconfig"; sourceTree = "<group>"; };
 		FAE945D72CD8D6F556EE0415 /* Pods_goToWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goToWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -229,6 +237,7 @@
 				9EC711F3214F541F006BBC4B /* Extension+UIBarButtonItem.swift */,
 				9EC711F4214F541F006BBC4B /* Extension+UIView.swift */,
 				9EC711FC214FA358006BBC4B /* Extension+UIColor.swift */,
+				9EC7122221521F83006BBC4B /* Extension+UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = SOURCE_ROOT;
@@ -300,6 +309,7 @@
 			children = (
 				9EC711E5214CCC50006BBC4B /* CompanyListTableViewCell.swift */,
 				9EC711E7214D0309006BBC4B /* CollapsibleTableViewHeader.swift */,
+				9EE7E08B21537075005BC791 /* JobDetailTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,6 +319,7 @@
 			children = (
 				9EC711AC214A2BB4006BBC4B /* JobListViewController.swift */,
 				9EC711E9214F4B5B006BBC4B /* NoviceNoteWebViewController.swift */,
+				9EC7122421524B03006BBC4B /* JobDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -360,6 +371,7 @@
 		9EC711FE214FCBC2006BBC4B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				9EE7E08F2154E6C5005BC791 /* PaddingLabel */,
 				9EC7121F2151498C006BBC4B /* Location */,
 				9EC71214215142B2006BBC4B /* AddressView */,
 				9EC712112150EAC6006BBC4B /* EmptyDataSet */,
@@ -426,6 +438,14 @@
 				9EC712202151499B006BBC4B /* LocationManager.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		9EE7E08F2154E6C5005BC791 /* PaddingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9EE7E0902154E6D5005BC791 /* LablePadding.swift */,
+			);
+			path = PaddingLabel;
 			sourceTree = "<group>";
 		};
 		F9EA942A360F3DE60DC9FFD8 /* Frameworks */ = {
@@ -575,7 +595,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-goToWork/Pods-goToWork-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-goToWork/Pods-goToWork-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework",
@@ -606,7 +626,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-goToWork/Pods-goToWork-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goToWork/Pods-goToWork-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E567BB6393F2982D05A2E31C /* [CP] Check Pods Manifest.lock */ = {
@@ -635,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC711F5214F541F006BBC4B /* Extension+String.swift in Sources */,
+				9EE7E0912154E6D5005BC791 /* LablePadding.swift in Sources */,
 				9EC7121E215142B2006BBC4B /* UIView+KLExtension.swift in Sources */,
 				9EC7116F214A0AC2006BBC4B /* ViewController.swift in Sources */,
 				9EC711FB214F994B006BBC4B /* BaseViewController.swift in Sources */,
@@ -644,7 +665,9 @@
 				9EC712212151499B006BBC4B /* LocationManager.swift in Sources */,
 				9EC7121C215142B2006BBC4B /* KLCityPickerView.swift in Sources */,
 				9EC7120B214FD1D2006BBC4B /* ScheduleListViewController.swift in Sources */,
+				9EC7122521524B03006BBC4B /* JobDetailViewController.swift in Sources */,
 				9EC711CF214A3D1C006BBC4B /* ExampleBouncesContentView.swift in Sources */,
+				9EE7E08C21537075005BC791 /* JobDetailTableViewCell.swift in Sources */,
 				9EC711F6214F541F006BBC4B /* Extension+UIBarButtonItem.swift in Sources */,
 				9EC7121D215142B2006BBC4B /* UIColor+KLExtension.swift in Sources */,
 				9EC711AD214A2BB4006BBC4B /* JobListViewController.swift in Sources */,
@@ -655,6 +678,7 @@
 				9EC711E0214B5C09006BBC4B /* Job.swift in Sources */,
 				9EC7116D214A0AC2006BBC4B /* AppDelegate.swift in Sources */,
 				9EC711DC214A559F006BBC4B /* Api.swift in Sources */,
+				9EC7122321521F83006BBC4B /* Extension+UIButton.swift in Sources */,
 				9EC711B2214A2D50006BBC4B /* BaseNavgationController.swift in Sources */,
 				9EC711CE214A3D1C006BBC4B /* ExampleBasicContentView.swift in Sources */,
 				9EC711DE214A564B006BBC4B /* Global.swift in Sources */,

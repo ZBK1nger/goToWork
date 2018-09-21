@@ -64,6 +64,7 @@ extension ScheduleListViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ScheduleListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ScheduleListTableViewCell", for: indexPath) as! ScheduleListTableViewCell
+        cell.selectionStyle = .none
         cell.model = schedule?[indexPath.section]
         return cell
     }

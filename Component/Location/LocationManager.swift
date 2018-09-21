@@ -48,7 +48,13 @@ class LocationManager:CLLocationManager, CLLocationManagerDelegate {
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 
                 if let name = placemarks?.first?.locality {
-                    self.successBlock?(name)
+                    if name.contains("市") {
+                      self.successBlock?(name.replacingOccurrences(of: "市", with: ""))
+                    }
+                    else {
+                        self.successBlock?(name)
+                    }
+                   
                 } else {
                     self.failBlock?("抱歉，获取不到您的位置")
                 }

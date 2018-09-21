@@ -116,7 +116,16 @@ enum Api {
     case jobCategoryList // 首页职位列表
     case joblist(address:String , job:String) // 首页招聘列表
     case scheduleList(user_id:String) //面试日程列表
-    
+    case jobDetail(company_id:String) //职位详情
+    case entrollForSelfState(user_id:String) //判断自己给自己报名的状态
+    case agentState(user_id:String)
+    /*
+      获取经纪人状态
+    - 1未注册（在该处加入短信验证，提交手机号验证成功后默认该步完成）
+    - 2已注册待完善（在该处加入短信提醒功能，您在上班呗经纪人注册信息已通过等等）
+    - 3已注册已完善待审核
+    - 4已注册已完善审核通过
+ */
 }
 
 extension Api:TargetType {
@@ -132,6 +141,12 @@ extension Api:TargetType {
             return "/hunter/index.php/Home/Api/getListbyCompany"
         case .scheduleList:
             return "/hunter/index.php/Home/Personal/interview"
+        case .jobDetail:
+            return "/hunter/index.php/Home/XiangQing/demand"
+        case .entrollForSelfState:
+            return "/hunter/index.php/Home/Personal/baoming_zhuangtai"
+        case .agentState:
+            return "/hunter/index.php/Home/Api/getInfobyid"
         }
     }
     
@@ -150,6 +165,12 @@ extension Api:TargetType {
             params["address"] = address
             params["job"] = job
         case .scheduleList(let user_id):
+            params["user_id"] = user_id
+        case .jobDetail(let company_id):
+            params["id"] = company_id
+        case .entrollForSelfState(let user_id):
+            params["user_id"] = user_id
+        case .agentState(let user_id):
             params["user_id"] = user_id
         default:
             return.requestPlain

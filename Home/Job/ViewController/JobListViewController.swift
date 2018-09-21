@@ -24,6 +24,10 @@ class JobListViewController:BaseViewController {
     
     private var data: [[String]] = [[String]]()
     
+    private var cityName:String = "苏州"
+    
+    private var positionName:String = "不限"
+    
     // 省市区
     var myProvince: String?
     
@@ -34,17 +38,19 @@ class JobListViewController:BaseViewController {
     private lazy var cityBtn:UIButton = {
         let btn = UIButton(type:.custom)
         btn.backgroundColor = UIColor.hex(hexString: BasicColor)
-        btn.setTitleColor(UIColor.white, for:.normal )
+        btn.setImage(UIImage(named: "arrow_white"), for: .normal)
+        btn.setTitleColor(UIColor.white, for:.normal)
         btn.addTarget(self, action: #selector(popCityList), for: .touchUpInside)
-        btn.setTitle("哈尔滨", for: .normal)
         return btn
     }()
     
     private lazy var positionBtn = UIButton().then { (btn) in
         btn.backgroundColor = UIColor.hex(hexString: BasicColor)
         btn.setTitleColor(UIColor.white, for:.normal )
-        btn.addTarget(self, action: #selector(self.popPositionList), for: .touchUpInside)
+        btn.setImage(UIImage(named: "arrow_white"), for: .normal)
         btn.setTitle("不限", for: .normal)
+        btn.setImagePosition(position: .right, spacing: 0)
+        btn.addTarget(self, action: #selector(self.popPositionList), for: .touchUpInside)
     }
     lazy var companyListTableView:UITableView = {
         let tw = UITableView(frame: CGRect.zero, style: .plain)
@@ -57,7 +63,7 @@ class JobListViewController:BaseViewController {
         tw.rowHeight = UITableViewAutomaticDimension
         tw.estimatedSectionHeaderHeight = 200;
         tw.sectionHeaderHeight = UITableViewAutomaticDimension;
-        tw.uHead = URefreshHeader {[weak self] in self?.loadData()}
+        tw.uHead = URefreshHeader {[weak self] in self?.getCompanyListFromSever()}
         tw.uFoot = URefreshDiscoverFooter()
         //tw.uempty = UEmptyView { [weak self] in self?.loadData() }
         // 希望footer高为0
@@ -66,6 +72,7 @@ class JobListViewController:BaseViewController {
         
         return tw
     }()
+    
     
     private lazy var noviceNoteBtn: UIButton = {
         let sn = UIButton(type: .custom)
@@ -78,11 +85,47 @@ class JobListViewController:BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        manager.getLocation(success: { (str) in
-            print(str)
-        }) { (str) in
-            print(str)
+        //loadData()
+        getLocation()
+    }
+    //MARK - 定位
+    private func getLocation() {
+        manager.getLocation(success: { (city) in
+            self.cityBtn.setTitle(city, for: .normal)
+            self.cityBtn.setImagePosition(position: .right, spacing: 0)
+            self.cityName = city
+            self.getPositionListFromSever()
+        }) { (error) in
+            print(error)
+        }
+    }
+    //MARK - 获取公司列表
+    private func getCompanyListFromSever() {
+        ApiRequest(.joblist(address: self.cityName, job: self.positionName), completion: { (response) -> (Void) in
+            self.companyListTableView.uHead.endRefreshing()
+            //self.companyListTableView.uempty?.allowShow = true
+            self.companyList = [CompanyList].deserialize(from: response)! as! [CompanyList]
+            self.companyListTableView.reloadData()
+        }) { (error) in
+            print(error)
+        }
+        
+    }
+   //MARK -获取职位列表
+    private func getPositionListFromSever() {
+        ApiRequest(.jobCategoryList, completion: { (response) -> (Void) in
+            self.position = PositionList.deserialize(from: response)?.data
+            if self.position != nil {
+                for item in self.position! {
+                    self.list.append(item.name!)
+                    self.data.removeAll()
+                    self.data.append(self.list)
+                }
+                self.getCompanyListFromSever()
+            }
+            
+        }) { (error) in
+            print(error)
         }
     }
     
@@ -90,7 +133,10 @@ class JobListViewController:BaseViewController {
     @objc func popPositionList() {
         McPicker.show(data: data, doneHandler: { [weak self] (selections: [Int:String]) in
             if let name = selections[0] {
-                self?.positionBtn.setTitle(name, for: .normal)
+                    self?.positionBtn.setTitle(name, for: .normal)
+                    self?.positionBtn.setImagePosition(position: .right, spacing: 0)
+                    self?.positionName = name
+                self?.getCompanyListFromSever()
             }
             }, cancelHandler: {
                 print("Canceled Default Picker")
@@ -106,36 +152,16 @@ class JobListViewController:BaseViewController {
         address.cityPickerViewWithProvince(procvince: myProvince, city: myCity) { (province, city) in
             self.myProvince = province
             self.myCity = city
-            self.cityBtn.setTitle(city, for: .normal)
+            if city.contains("市") {
+                self.myCity = self.myCity?.replacingOccurrences(of: "市", with: "")
+            }
+            self.cityBtn.setTitle(self.myCity, for: .normal)
+            self.cityBtn.setImagePosition(position: .right, spacing: 0)
+            self.cityName = self.myCity ?? "无"
+            self.getCompanyListFromSever()
         }
     }
     
-// MARK 加载数据
-    private func loadData() {
-        ApiRequest(.joblist(address: "苏州", job: "不限"), completion: { (response) -> (Void) in
-            self.companyListTableView.uHead.endRefreshing()
-            //self.companyListTableView.uempty?.allowShow = true
-            self.companyList = [CompanyList].deserialize(from: response)! as! [CompanyList] 
-            self.companyListTableView.reloadData()
-        }) { (error) in
-            print(error)
-        }
-        ApiRequest(.jobCategoryList, completion: { (response) -> (Void) in
-            self.position = PositionList.deserialize(from: response)?.data
-            if self.position != nil {
-                for item in self.position! {
-                    self.list.append(item.name!)
-                    self.data.removeAll()
-                    self.data.append(self.list)
-                }
-                
-            }
-            
-        }) { (error) in
-            print(error)
-        }
-       
-    }
 // MARK - 跳转到新手须知页面
     @objc private func showNoviceNote() {
         let noviceNoteWebViewController = NoviceNoteWebViewController()
@@ -211,6 +237,15 @@ extension JobListViewController:UITableViewDelegate,UITableViewDataSource {
 //        return UITableViewAutomaticDimension
 //    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let jobDetailViewController = JobDetailViewController()
+        if let navgationController = navigationController {
+            jobDetailViewController.companyId = companyList[indexPath.section].list?[indexPath.row].id
+            navgationController.pushViewController(jobDetailViewController, animated: true)
+            return
+        }
+        navigationController?.present(jobDetailViewController, animated: true, completion: nil)
+    }
 
 }
 
@@ -229,6 +264,16 @@ extension JobListViewController: CollapsibleTableViewHeaderDelegate {
         UIView.performWithoutAnimation {
              companyListTableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
         }
+    }
+    
+    func headerViewSelected(_ header: CollapsibleTableViewHeader, section: Int) {
+        let jobDetailViewController = JobDetailViewController()
+        if let navgationController = navigationController {
+            jobDetailViewController.companyId = companyList[section].id
+            navgationController.pushViewController(jobDetailViewController, animated: true)
+            return
+        }
+        navigationController?.present(jobDetailViewController, animated: true, completion: nil)
     }
     
 }

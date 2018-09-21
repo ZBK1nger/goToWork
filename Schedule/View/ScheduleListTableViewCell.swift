@@ -172,12 +172,12 @@ class ScheduleListTableViewCell: UITableViewCell {
             guard let model = model else {
                 return
             }
-            mettingDate.text = "面试时间：" + model.date!
-            commission.text = "佣金：" + model.premium!
-            mettingAddress.text = "面试地址：" + model.interview!
-            companyName.text = "面试公司：" + model.company_name!
-            username.text = "面试人：" + model.username!
-            userTel.text = "面试人电话：" + model.tel!
+            mettingDate.text = "面试时间：\(model.date ?? "")"
+            commission.text = "佣金：\(model.premium ?? "")"
+            mettingAddress.text = "面试地址：\(model.interview ?? "")"
+            companyName.text = "面试公司：\(model.company_name ?? "")"
+            username.text = "面试人：\(model.username ?? "")"
+            userTel.text = "面试人电话：\(model.tel ?? "")"
             if model.status_mianshi == "1" {
                 status_metting.setImage(UIImage.init(named: "status_true"), for: .normal)
             }
