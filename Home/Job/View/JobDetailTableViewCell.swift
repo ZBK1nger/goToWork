@@ -342,7 +342,7 @@ class CommissionIntroductionCell: UITableViewCell {
             guard let model = model else {
                 return
             }
-            introduction.text = model.yongjin
+            introduction.text = model.yongjin ?? "无"
         }
     }
 }

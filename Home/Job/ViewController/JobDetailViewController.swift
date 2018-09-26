@@ -132,7 +132,8 @@ class JobDetailViewController: BaseViewController {
     
     private func loadMoreData() {
         ApiRequest(Api.jobDetail(company_id: companyId ?? ""), completion: { (response) -> (Void) in
-            self.company = Company.deserialize(from: response)!
+            self.jobDetailTableView.uHead.endRefreshing()
+            self.company = Company.deserialize(from: response)
             self.jobDetailTableView.reloadData()
         }) { (error) in
             print(error)

@@ -14,6 +14,7 @@ PODS:
     - Result (~> 3.0)
   - Result (3.2.4)
   - SnapKit (4.0.1)
+  - SwiftyJSON (4.1.0)
   - Then (2.3.0)
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - MJRefresh
   - Moya
   - SnapKit (~> 4.0.0)
+  - SwiftyJSON
   - Then
 
 SPEC REPOS:
@@ -41,6 +43,7 @@ SPEC REPOS:
     - Moya
     - Result
     - SnapKit
+    - SwiftyJSON
     - Then
 
 SPEC CHECKSUMS:
@@ -55,8 +58,9 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
 
-PODFILE CHECKSUM: d0389aaaaefaab93179a8d1e756e083034265eb0
+PODFILE CHECKSUM: 8bf91d2a6c3feda1c56c00272bb9a5f3906d368e
 
 COCOAPODS: 1.6.0.beta.1

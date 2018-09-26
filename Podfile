@@ -15,4 +15,5 @@ target 'goToWork' do
     pod 'Then'
     pod 'McPicker'
     pod 'EmptyDataSet-Swift'
+    pod 'SwiftyJSON'
 end

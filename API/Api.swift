@@ -30,6 +30,14 @@ func ApiRequest(_ target: Api, completion: @escaping successCallback , failure:@
         switch result {
         case let .success(response):
             completion(String(data: response.data, encoding: String.Encoding.utf8)!)
+            //                if jsonData[RESULT_CODE].stringValue == "1000"{
+            //                    completion(String(data: response.data, encoding: String.Encoding.utf8)!)
+            //                }else{
+            //                if failed != nil{
+            //                    failed(String(data: response.data, encoding: String.Encoding.utf8)!)
+            //                }
+            //                }
+
         case let .failure(error):
             failure(error)
         }
@@ -126,6 +134,9 @@ enum Api {
     - 3已注册已完善待审核
     - 4已注册已完善审核通过
  */
+    case cityList //获取已开通城市列表
+    case historyRewardList(user_id:String) // 历史收入列表
+    case reward(user_id:String) //预计收入和历史收入
 }
 
 extension Api:TargetType {
@@ -147,6 +158,12 @@ extension Api:TargetType {
             return "/hunter/index.php/Home/Personal/baoming_zhuangtai"
         case .agentState:
             return "/hunter/index.php/Home/Api/getInfobyid"
+        case .cityList:
+            return "/hunter/index.php/Home/Api/getCityList"
+        case .historyRewardList:
+            return "/hunter/index.php/Home/Personal/premium"
+        case .reward:
+            return  "/hunter/index.php/Home/Personal/plan_premium"
         }
     }
     
@@ -171,6 +188,10 @@ extension Api:TargetType {
         case .entrollForSelfState(let user_id):
             params["user_id"] = user_id
         case .agentState(let user_id):
+            params["user_id"] = user_id
+        case .historyRewardList(let user_id):
+            params["user_id"] = user_id
+        case .reward(let user_id):
             params["user_id"] = user_id
         default:
             return.requestPlain

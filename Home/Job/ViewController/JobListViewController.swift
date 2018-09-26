@@ -148,18 +148,15 @@ class JobListViewController:BaseViewController {
     
     //MARK - 弹出城市选择器
     @objc func popCityList() {
-        let address = KLCityPickerView()
-        address.cityPickerViewWithProvince(procvince: myProvince, city: myCity) { (province, city) in
-            self.myProvince = province
-            self.myCity = city
-            if city.contains("市") {
-                self.myCity = self.myCity?.replacingOccurrences(of: "市", with: "")
-            }
-            self.cityBtn.setTitle(self.myCity, for: .normal)
-            self.cityBtn.setImagePosition(position: .right, spacing: 0)
-            self.cityName = self.myCity ?? "无"
-            self.getCompanyListFromSever()
+        let areaPickViewController = AreaPickerViewController()
+        //noviceNoteWebViewController.hidesBottomBarWhenPushed = true
+        if let navigationController = navigationController {
+            navigationController.pushViewController(areaPickViewController, animated: true)
+            areaPickViewController.currentCity = cityBtn.titleLabel?.text
+            areaPickViewController.delegate = self
+            return
         }
+        present(areaPickViewController, animated: true, completion: nil)
     }
     
 // MARK - 跳转到新手须知页面
@@ -252,7 +249,15 @@ extension JobListViewController:UITableViewDelegate,UITableViewDataSource {
 //
 // MARK: - Section Header Delegate
 //
-extension JobListViewController: CollapsibleTableViewHeaderDelegate {
+extension JobListViewController: CollapsibleTableViewHeaderDelegate,modifySelectedCityProtocol {
+    //MARK - modifySelectedCityProtocol
+    func modifySelectedCity(city: String) {
+        self.cityBtn.setTitle(city, for: .normal)
+        self.cityBtn.setImagePosition(position: .right, spacing: 0)
+        self.cityName = city
+        self.getPositionListFromSever()
+    }
+    
     // 通过改变model中collapsed的状态来进行展开收起
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
         let collapsed = !companyList[section].collapsed!

@@ -38,9 +38,12 @@ class ScheduleListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMoreData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadMoreData()
+    }
     // MARK 加载数据
     private func loadMoreData() {
         //oA5Pi5KnaMPBQM9b0_RI9coLFVPw

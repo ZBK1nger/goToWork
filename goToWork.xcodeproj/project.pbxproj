@@ -48,6 +48,10 @@
 		9EC712212151499B006BBC4B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC712202151499B006BBC4B /* LocationManager.swift */; };
 		9EC7122321521F83006BBC4B /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7122221521F83006BBC4B /* Extension+UIButton.swift */; };
 		9EC7122521524B03006BBC4B /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7122421524B03006BBC4B /* JobDetailViewController.swift */; };
+		9EE61F46215A180F00AAEEEC /* AreaPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE61F45215A180F00AAEEEC /* AreaPickerViewController.swift */; };
+		9EE61F49215A645D00AAEEEC /* UNoticeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE61F48215A645D00AAEEEC /* UNoticeBar.swift */; };
+		9EE61F4D215B700400AAEEEC /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE61F4C215B700400AAEEEC /* Reward.swift */; };
+		9EE61F4F215B76A800AAEEEC /* RewardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE61F4E215B76A800AAEEEC /* RewardTableViewCell.swift */; };
 		9EE7E08C21537075005BC791 /* JobDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7E08B21537075005BC791 /* JobDetailTableViewCell.swift */; };
 		9EE7E0912154E6D5005BC791 /* LablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7E0902154E6D5005BC791 /* LablePadding.swift */; };
 /* End PBXBuildFile section */
@@ -119,6 +123,10 @@
 		9EC712202151499B006BBC4B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9EC7122221521F83006BBC4B /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		9EC7122421524B03006BBC4B /* JobDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
+		9EE61F45215A180F00AAEEEC /* AreaPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaPickerViewController.swift; sourceTree = "<group>"; };
+		9EE61F48215A645D00AAEEEC /* UNoticeBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UNoticeBar.swift; sourceTree = "<group>"; };
+		9EE61F4C215B700400AAEEEC /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		9EE61F4E215B76A800AAEEEC /* RewardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardTableViewCell.swift; sourceTree = "<group>"; };
 		9EE7E08B21537075005BC791 /* JobDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailTableViewCell.swift; sourceTree = "<group>"; };
 		9EE7E0902154E6D5005BC791 /* LablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LablePadding.swift; sourceTree = "<group>"; };
 		D6FB12D5D4AFA25174B43F02 /* Pods-goToWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goToWork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-goToWork/Pods-goToWork.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +271,8 @@
 		9EC7119E214A0CC6006BBC4B /* Reward */ = {
 			isa = PBXGroup;
 			children = (
+				9EE61F4A215B540500AAEEEC /* Model */,
+				9EE61F4B215B540500AAEEEC /* View */,
 				9EC711A6214A2B04006BBC4B /* Controller */,
 			);
 			path = Reward;
@@ -320,6 +330,7 @@
 				9EC711AC214A2BB4006BBC4B /* JobListViewController.swift */,
 				9EC711E9214F4B5B006BBC4B /* NoviceNoteWebViewController.swift */,
 				9EC7122421524B03006BBC4B /* JobDetailViewController.swift */,
+				9EE61F45215A180F00AAEEEC /* AreaPickerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -371,6 +382,7 @@
 		9EC711FE214FCBC2006BBC4B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				9EE61F47215A645D00AAEEEC /* NoticeBar */,
 				9EE7E08F2154E6C5005BC791 /* PaddingLabel */,
 				9EC7121F2151498C006BBC4B /* Location */,
 				9EC71214215142B2006BBC4B /* AddressView */,
@@ -438,6 +450,30 @@
 				9EC712202151499B006BBC4B /* LocationManager.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		9EE61F47215A645D00AAEEEC /* NoticeBar */ = {
+			isa = PBXGroup;
+			children = (
+				9EE61F48215A645D00AAEEEC /* UNoticeBar.swift */,
+			);
+			path = NoticeBar;
+			sourceTree = "<group>";
+		};
+		9EE61F4A215B540500AAEEEC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EE61F4C215B700400AAEEEC /* Reward.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9EE61F4B215B540500AAEEEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9EE61F4E215B76A800AAEEEC /* RewardTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9EE7E08F2154E6C5005BC791 /* PaddingLabel */ = {
@@ -607,6 +643,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -622,6 +659,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +695,7 @@
 				9EC711F5214F541F006BBC4B /* Extension+String.swift in Sources */,
 				9EE7E0912154E6D5005BC791 /* LablePadding.swift in Sources */,
 				9EC7121E215142B2006BBC4B /* UIView+KLExtension.swift in Sources */,
+				9EE61F49215A645D00AAEEEC /* UNoticeBar.swift in Sources */,
 				9EC7116F214A0AC2006BBC4B /* ViewController.swift in Sources */,
 				9EC711FB214F994B006BBC4B /* BaseViewController.swift in Sources */,
 				9EC711E8214D0309006BBC4B /* CollapsibleTableViewHeader.swift in Sources */,
@@ -673,7 +712,9 @@
 				9EC711AD214A2BB4006BBC4B /* JobListViewController.swift in Sources */,
 				9EC711F1214F52B2006BBC4B /* WkwebViewConfig.swift in Sources */,
 				9EC7120D214FD84B006BBC4B /* ScheduleListTableViewCell.swift in Sources */,
+				9EE61F46215A180F00AAEEEC /* AreaPickerViewController.swift in Sources */,
 				9EC71201214FCC12006BBC4B /* URefresh.swift in Sources */,
+				9EE61F4F215B76A800AAEEEC /* RewardTableViewCell.swift in Sources */,
 				9EC711E6214CCC50006BBC4B /* CompanyListTableViewCell.swift in Sources */,
 				9EC711E0214B5C09006BBC4B /* Job.swift in Sources */,
 				9EC7116D214A0AC2006BBC4B /* AppDelegate.swift in Sources */,
@@ -684,6 +725,7 @@
 				9EC711DE214A564B006BBC4B /* Global.swift in Sources */,
 				9EC7121B215142B2006BBC4B /* ConfigureMacro.swift in Sources */,
 				9EC711AB214A2B93006BBC4B /* MineViewController.swift in Sources */,
+				9EE61F4D215B700400AAEEEC /* Reward.swift in Sources */,
 				9EC711EF214F52B2006BBC4B /* WebView.swift in Sources */,
 				9EC711AF214A2BCF006BBC4B /* RewardViewController.swift in Sources */,
 				9EC711EA214F4B5B006BBC4B /* NoviceNoteWebViewController.swift in Sources */,
