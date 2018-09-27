@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 class JobDetailViewController: BaseViewController {
     
     public var companyId:String?
@@ -150,11 +151,43 @@ class JobDetailViewController: BaseViewController {
     }
     // MARK - entroll for others
     @objc func entrollForOthers() {
-        
+        guard let user_id = UserDefaults.standard.object(forKey: "user_id") else {
+            return
+        }
+        ApiRequest(Api.agentState(user_id: user_id as! String), completion: { (response) -> (Void) in
+            let json = JSON(parseJSON: response)
+            if json["data"]["status"].stringValue == "0" {
+                UNoticeBar(config: UNoticeBarConfig(title: "请先注册经纪人")).show(duration: 2)
+            }
+            else {
+                let entrollViewController = EntrollViewController()
+                entrollViewController.navTitle = "帮TA报名"
+                entrollViewController.company  = self.company
+                self.navigationController?.pushViewController(entrollViewController, animated: true)
+            }
+        }) { (err) in
+            print(err)
+        }
     }
     // MARK - entroll for self
     @objc func entrollForSelf() {
-        
+        guard let user_id = UserDefaults.standard.object(forKey: "user_id") else {
+            return
+        }
+        ApiRequest(Api.entrollForSelfState(user_id: user_id as! String), completion: { (response) -> (Void) in
+            let json = JSON(parseJSON: response)
+            if json["res"].stringValue == "1" {
+                let entrollViewController = EntrollViewController()
+                entrollViewController.navTitle = "我要报名"
+                entrollViewController.company  = self.company
+                self.navigationController?.pushViewController(entrollViewController, animated: true)
+            }
+            else {
+                UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 2)
+            }
+        }) { (err) in
+            print(err)
+        }
     }
 }
 extension JobDetailViewController:UITableViewDelegate,UITableViewDataSource {

@@ -8,7 +8,7 @@
 
 import Foundation
 import Moya
-import MBProgressHUD
+import SwiftProgressHUD
 import Alamofire
 /// 超时时长
 private var requestTimeOut:Double = 30
@@ -72,10 +72,10 @@ private let LoadingPlugin = NetworkActivityPlugin { (type, target) in
     guard let vc = window else { return }
     switch type {
     case .began:
-        MBProgressHUD.hide(for: vc.view, animated: false)
-        MBProgressHUD.showAdded(to: vc.view, animated: true)
+        SwiftProgressHUD.hideAllHUD()
+        SwiftProgressHUD.showWait()
     case .ended:
-        MBProgressHUD.hide(for: vc.view, animated: true)
+        SwiftProgressHUD.hideAllHUD()
     }
 }
 //MARK: - 设置请求头部信息
@@ -106,7 +106,7 @@ private let requestClosure = {(endpoint: Endpoint, done: MoyaProvider.RequestRes
         request.timeoutInterval = 30
         // 打印请求参数
         if let requestData = request.httpBody {
-            print("\(request.url!)"+"\n"+"\(request.httpMethod ?? "")"+"发送参数"+"\(String(data: request.httpBody!, encoding: String.Encoding.utf8) ?? "")")
+            print("\(request.url!)"+"\n"+"\(request.httpMethod ?? "")" + "\n" + "发送参数"+"\(String(data: request.httpBody!, encoding: String.Encoding.utf8) ?? "")")
         }else{
             print("\(request.url!)"+"\(String(describing: request.httpMethod))")
         }
@@ -119,6 +119,7 @@ private let requestClosure = {(endpoint: Endpoint, done: MoyaProvider.RequestRes
 
 let ApiProvider = MoyaProvider<Api>(requestClosure: requestClosure)
 let ApiLoadingProvider = MoyaProvider<Api>(requestClosure: requestClosure, plugins: [LoadingPlugin])
+//let ApiLoadingProvider = MoyaProvider<Api>(requestClosure: requestClosure)
 
 enum Api {
     case jobCategoryList // 首页职位列表

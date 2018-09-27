@@ -9,7 +9,7 @@ target 'goToWork' do
     pod 'Moya'
     pod 'SnapKit', '~> 4.0.0'
     pod 'MJRefresh'
-    pod 'MBProgressHUD'
+    pod 'SwiftProgressHUD'
     pod 'Kingfisher', '~> 4.0'
     pod 'HandyJSON', '~> 4.2.0'
     pod 'Then'

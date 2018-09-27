@@ -147,7 +147,7 @@ class JobDescriptionCell: UITableViewCell {
     lazy var item_commission:LablePadding = {
         let label = LablePadding(paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0)
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor.hex(hexString: "#8a8a8a")
+        label.textColor = UIColor.red
         label.backgroundColor = UIColor.white
         label.numberOfLines = 0
         return label

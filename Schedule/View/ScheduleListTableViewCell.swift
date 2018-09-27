@@ -59,6 +59,7 @@ class ScheduleListTableViewCell: UITableViewCell {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitle("面试通过", for: .normal)
         btn.setImage(UIImage(named: "status_true"), for: .normal)
+        btn.setImagePosition(position: .bottom, spacing: -15)
         return btn
     }()
     private lazy var status_commission:UIButton = {
@@ -67,6 +68,7 @@ class ScheduleListTableViewCell: UITableViewCell {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitle("满足佣金", for: .normal)
         btn.setImage(UIImage(named: "status_true"), for: .normal)
+        btn.setImagePosition(position: .bottom, spacing: -15)
         return btn
     }()
     private lazy var status_end:UIButton = {
@@ -75,6 +77,7 @@ class ScheduleListTableViewCell: UITableViewCell {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitle("确认结款", for: .normal)
         btn.setImage(UIImage(named: "status_true"), for: .normal)
+        btn.setImagePosition(position: .bottom, spacing: -15)
         return btn
     }()
     private lazy var line1:UIView = {
@@ -136,7 +139,7 @@ class ScheduleListTableViewCell: UITableViewCell {
             make.left.right.equalToSuperview().offset(10)
         }
         status_metting.snp.makeConstraints { (make) in
-             make.top.equalTo(userTel.snp.bottom).offset(10)
+             make.top.equalTo(userTel.snp.bottom).offset(25)
              make.left.equalToSuperview().offset(10)
              make.width.greaterThanOrEqualTo(60)
              make.height.greaterThanOrEqualTo(20)
