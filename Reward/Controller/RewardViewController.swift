@@ -93,10 +93,12 @@ extension RewardViewController:UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             let cell:EstimateRewardTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EstimateRewardTableViewCell", for: indexPath) as! EstimateRewardTableViewCell
             cell.amount = estimateRewardAmout
+            cell.selectionStyle = .none
             return cell
         }
         else {
             let cell:HistoryRewardListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "HistoryRewardListTableViewCell", for: indexPath) as! HistoryRewardListTableViewCell
+            cell.selectionStyle = .none
             cell.model = self.historyReward?[indexPath.row]
             return cell
         }

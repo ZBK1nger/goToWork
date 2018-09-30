@@ -143,11 +143,14 @@ class JobDetailViewController: BaseViewController {
     
     //MARK - push recruitment Brief page
     @objc func pushRecruitmentBriefPage() {
-        
+        let recruitmentBriefViewController = RecruitmentBriefViewContoller()
+        recruitmentBriefViewController.companyId = self.companyId
+        recruitmentBriefViewController.company = self.company
+        navigationController?.pushViewController(recruitmentBriefViewController, animated: true)
     }
     //MARK - share Links for others
     @objc func shareJobLinks() {
-        
+        UNoticeBar(config: UNoticeBarConfig(title: "暂不能分享邀请")).show(duration: 2)
     }
     // MARK - entroll for others
     @objc func entrollForOthers() {

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		49F7C9DC63DDC7E78B3BB5D7 /* Pods_goToWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE945D72CD8D6F556EE0415 /* Pods_goToWork.framework */; };
+		9E724964215E1461008DC228 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E724960215E1461008DC228 /* DatePickerView.swift */; };
+		9E724965215E1461008DC228 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E724961215E1461008DC228 /* DatePickerView.xib */; };
+		9E724968215E15C4008DC228 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E724966215E15C4008DC228 /* Date+Extension.swift */; };
+		9E724969215E15C4008DC228 /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E724967215E15C4008DC228 /* UIKit+Extension.swift */; };
+		9E72496B215F5F05008DC228 /* RecruitmentBriefViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72496A215F5F05008DC228 /* RecruitmentBriefViewContoller.swift */; };
+		9E72496D216063FB008DC228 /* RecruitmentBriefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72496C216063FB008DC228 /* RecruitmentBriefTableViewCell.swift */; };
 		9EC7116D214A0AC2006BBC4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7116C214A0AC2006BBC4B /* AppDelegate.swift */; };
 		9EC7116F214A0AC2006BBC4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7116E214A0AC2006BBC4B /* ViewController.swift */; };
 		9EC71172214A0AC2006BBC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC71170214A0AC2006BBC4B /* Main.storyboard */; };
@@ -77,6 +83,12 @@
 
 /* Begin PBXFileReference section */
 		807492D5104CF77AC955A8B6 /* Pods-goToWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goToWork.release.xcconfig"; path = "Pods/Target Support Files/Pods-goToWork/Pods-goToWork.release.xcconfig"; sourceTree = "<group>"; };
+		9E724960215E1461008DC228 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		9E724961215E1461008DC228 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		9E724966215E15C4008DC228 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		9E724967215E15C4008DC228 /* UIKit+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
+		9E72496A215F5F05008DC228 /* RecruitmentBriefViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentBriefViewContoller.swift; sourceTree = "<group>"; };
+		9E72496C216063FB008DC228 /* RecruitmentBriefTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentBriefTableViewCell.swift; sourceTree = "<group>"; };
 		9EC71169214A0AC2006BBC4B /* goToWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goToWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC7116C214A0AC2006BBC4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EC7116E214A0AC2006BBC4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +184,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9E72495D215E1461008DC228 /* DatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				9E724960215E1461008DC228 /* DatePickerView.swift */,
+				9E724961215E1461008DC228 /* DatePickerView.xib */,
+			);
+			path = DatePickerView;
+			sourceTree = "<group>";
+		};
 		9EC71160214A0AC2006BBC4B = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +266,8 @@
 		9EC7119B214A0CC6006BBC4B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9E724966215E15C4008DC228 /* Date+Extension.swift */,
+				9E724967215E15C4008DC228 /* UIKit+Extension.swift */,
 				9EC711F2214F541F006BBC4B /* Extension+String.swift */,
 				9EC711F3214F541F006BBC4B /* Extension+UIBarButtonItem.swift */,
 				9EC711F4214F541F006BBC4B /* Extension+UIView.swift */,
@@ -325,6 +348,7 @@
 				9EC711E7214D0309006BBC4B /* CollapsibleTableViewHeader.swift */,
 				9EE7E08B21537075005BC791 /* JobDetailTableViewCell.swift */,
 				9EE61F52215CB1E200AAEEEC /* EntrollTableViewCell.swift */,
+				9E72496C216063FB008DC228 /* RecruitmentBriefTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +361,7 @@
 				9EC7122421524B03006BBC4B /* JobDetailViewController.swift */,
 				9EE61F50215C871100AAEEEC /* EntrollViewController.swift */,
 				9EE61F45215A180F00AAEEEC /* AreaPickerViewController.swift */,
+				9E72496A215F5F05008DC228 /* RecruitmentBriefViewContoller.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -388,6 +413,7 @@
 		9EC711FE214FCBC2006BBC4B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				9E72495D215E1461008DC228 /* DatePickerView */,
 				9EE61F47215A645D00AAEEEC /* NoticeBar */,
 				9EE7E08F2154E6C5005BC791 /* PaddingLabel */,
 				9EC7121F2151498C006BBC4B /* Location */,
@@ -607,6 +633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC71177214A0ACF006BBC4B /* LaunchScreen.storyboard in Resources */,
+				9E724965215E1461008DC228 /* DatePickerView.xib in Resources */,
 				9EC711F0214F52B2006BBC4B /* WKJSPOST.html in Resources */,
 				9EC7121A215142B2006BBC4B /* city.plist in Resources */,
 				9EC71174214A0ACF006BBC4B /* Assets.xcassets in Resources */,
@@ -641,6 +668,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -657,6 +685,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyDataSet_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -705,6 +734,7 @@
 				9EC7116F214A0AC2006BBC4B /* ViewController.swift in Sources */,
 				9EC711FB214F994B006BBC4B /* BaseViewController.swift in Sources */,
 				9EC711E8214D0309006BBC4B /* CollapsibleTableViewHeader.swift in Sources */,
+				9E72496B215F5F05008DC228 /* RecruitmentBriefViewContoller.swift in Sources */,
 				9EC711F7214F541F006BBC4B /* Extension+UIView.swift in Sources */,
 				9EC71208214FD170006BBC4B /* Schedule.swift in Sources */,
 				9EC712212151499B006BBC4B /* LocationManager.swift in Sources */,
@@ -715,6 +745,8 @@
 				9EE7E08C21537075005BC791 /* JobDetailTableViewCell.swift in Sources */,
 				9EC711F6214F541F006BBC4B /* Extension+UIBarButtonItem.swift in Sources */,
 				9EC7121D215142B2006BBC4B /* UIColor+KLExtension.swift in Sources */,
+				9E724964215E1461008DC228 /* DatePickerView.swift in Sources */,
+				9E724969215E15C4008DC228 /* UIKit+Extension.swift in Sources */,
 				9EC711AD214A2BB4006BBC4B /* JobListViewController.swift in Sources */,
 				9EC711F1214F52B2006BBC4B /* WkwebViewConfig.swift in Sources */,
 				9EC7120D214FD84B006BBC4B /* ScheduleListTableViewCell.swift in Sources */,
@@ -724,6 +756,7 @@
 				9EC711E6214CCC50006BBC4B /* CompanyListTableViewCell.swift in Sources */,
 				9EC711E0214B5C09006BBC4B /* Job.swift in Sources */,
 				9EC7116D214A0AC2006BBC4B /* AppDelegate.swift in Sources */,
+				9E724968215E15C4008DC228 /* Date+Extension.swift in Sources */,
 				9EC711DC214A559F006BBC4B /* Api.swift in Sources */,
 				9EC7122321521F83006BBC4B /* Extension+UIButton.swift in Sources */,
 				9EC711B2214A2D50006BBC4B /* BaseNavgationController.swift in Sources */,
@@ -735,6 +768,7 @@
 				9EC711AB214A2B93006BBC4B /* MineViewController.swift in Sources */,
 				9EE61F4D215B700400AAEEEC /* Reward.swift in Sources */,
 				9EC711EF214F52B2006BBC4B /* WebView.swift in Sources */,
+				9E72496D216063FB008DC228 /* RecruitmentBriefTableViewCell.swift in Sources */,
 				9EC711AF214A2BCF006BBC4B /* RewardViewController.swift in Sources */,
 				9EC711EA214F4B5B006BBC4B /* NoviceNoteWebViewController.swift in Sources */,
 				9EC712132150EAC6006BBC4B /* UEmptyDataSet.swift in Sources */,

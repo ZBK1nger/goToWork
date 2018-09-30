@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 class EntrollViewController: BaseViewController {
     public var company:Company?
     public var navTitle:String?
@@ -48,6 +49,8 @@ extension EntrollViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:EntrollTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EntrollTableViewCell", for: indexPath) as! EntrollTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.model = self.company
+        cell.delegate = self
         return cell
     }
     
@@ -58,6 +61,88 @@ extension EntrollViewController:UITableViewDelegate,UITableViewDataSource {
         let header:EntrollTableViewHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "EntrollTableViewHeader") as? EntrollTableViewHeader ?? EntrollTableViewHeader(reuseIdentifier: "EntrollTableViewHeader")
         header.model = self.company
         return header
+    }
+    
+}
+extension EntrollViewController:EntrollDelegate {
+    func submitEntrollInfo(name: String, tel: String, meetingDate: String, idCard: String) {
+        if name.isEmpty || tel.isEmpty {
+            UNoticeBar(config: UNoticeBarConfig(title:"姓名或者电话不能为空")).show(duration: 1)
+        }
+        else if tel.count != 11 {
+            UNoticeBar(config: UNoticeBarConfig(title:"手机号长度有误")).show(duration: 1)
+        }
+        else if !tel.verifyText(type: .PhoneNumber) {
+            UNoticeBar(config: UNoticeBarConfig(title:"请检查手机号码正确性")).show(duration: 1)
+        }
+        else if !idCard.verifyText(type: .IdentityCard) && !idCard.isEmpty {
+            UNoticeBar(config: UNoticeBarConfig(title:"请检查身份证正确性")).show(duration: 1)
+        }
+        else if meetingDate.isEmpty {
+            UNoticeBar(config: UNoticeBarConfig(title:"请选择面试时间")).show(duration: 1)
+        }
+        else {
+            guard let user_id = UserDefaults.standard.object(forKey: "user_id") else {
+                return
+            }
+            if navTitle == "帮TA报名" {
+                ApiRequest(Api.entrollForOthers(id: (self.company?.id)!, id_card: idCard, user_id: user_id as!String, username: name, tel: tel, date: meetingDate), completion: { (response) -> (Void) in
+                    let json = JSON(parseJSON: response)
+                    print(json)
+                    if json["date"] == "1" {
+                        self.sendMessage(name: name, date: meetingDate, tel: tel)
+                    }
+                    else if json["date"] == "3" {
+                        UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 1)
+                    }
+                    else {
+                        UNoticeBar(config: UNoticeBarConfig(title:"报名失败")).show(duration: 1)
+                    }
+                }) { (err) in
+                    print(err)
+                }
+            }
+            else {
+                ApiRequest(Api.entrollForSelf(id: self.company?.id ?? "", id_card: idCard, user_id: user_id as! String, username: name, tel: tel, date: meetingDate), completion: { (response) -> (Void) in
+                    let json = JSON(parseJSON: response)
+                    print(json)
+                    if json["date"] == "1" {
+                        self.sendMessage(name: name, date: meetingDate, tel: tel)
+                    }
+                    else if json["date"] == "3" {
+                        UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 1)
+                    }
+                    else {
+                        UNoticeBar(config: UNoticeBarConfig(title:"报名失败")).show(duration: 1)
+                    }
+                }) { (err) in
+                    print(err)
+                }
+            }
+        }
+    }
+    
+    func sendMessage(name:String,date:String,tel:String) {
+        
+        let content = "尊敬的\(name)您好！您已预约\(company?.company ?? "")|\(company?.job ?? "")的职位！请于\(date)之前到\(company?.interview ?? "")参加面试！如有问题请联系客服0512-87819866"
+        ApiRequest(Api.sendEntrollMessage(tel: tel, content: content), completion: { (response) -> (Void) in
+            let json = JSON(parseJSON: response)
+            print(json)
+            if json["res"] == JSON.null {
+                UNoticeBar(config: UNoticeBarConfig(title:"报名成功,请注意查收短信")).show(duration: 2)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+            else {
+                UNoticeBar(config: UNoticeBarConfig(title:"报名成功,短信验证码发送失败")).show(duration: 2)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+        }) { (err) in
+            print(err)
+        }
     }
     
 }

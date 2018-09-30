@@ -123,7 +123,7 @@ public struct UNoticeBarConfig {
     public init(title: String? = nil,
                 image: UIImage? = nil,
                 textColor: UIColor = UIColor.white,
-                backgroundColor: UIColor = UIColor.cyan,
+                backgroundColor: UIColor = UIColor.orange,
                 barStyle: UNoticeBarStyle = .onNavigationBar,
                 animationType: UNoticeBarAnimationType = .top) {
         self.title = title

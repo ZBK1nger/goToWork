@@ -138,6 +138,10 @@ enum Api {
     case cityList //获取已开通城市列表
     case historyRewardList(user_id:String) // 历史收入列表
     case reward(user_id:String) //预计收入和历史收入
+    case entrollForOthers(id:String,id_card:String,user_id:String,username:String,tel:String,date:String) //经纪人为求职者报名
+    case entrollForSelf(id:String,id_card:String,user_id:String,username:String,tel:String,date:String) //经纪人（或者为游客）为自己报名
+    case sendEntrollMessage(tel:String,content:String) // 报名成功后发送短信验证码
+    case recruitmentBrief(id:String)
 }
 
 extension Api:TargetType {
@@ -165,6 +169,14 @@ extension Api:TargetType {
             return "/hunter/index.php/Home/Personal/premium"
         case .reward:
             return  "/hunter/index.php/Home/Personal/plan_premium"
+        case .entrollForOthers:
+            return "/hunter/index.php/Home/Personal/schedule"
+        case .entrollForSelf:
+            return "/hunter/index.php/Home/Personal/schedule_geren"
+        case .sendEntrollMessage:
+            return "/hunter/sendms"
+        case .recruitmentBrief:
+            return "/hunter/index.php/Home/XiangQing/demand_details"
         }
     }
     
@@ -194,6 +206,25 @@ extension Api:TargetType {
             params["user_id"] = user_id
         case .reward(let user_id):
             params["user_id"] = user_id
+        case .entrollForOthers(let id, let id_card, let user_id, let user_name, let tel, let date):
+            params["id"] = id
+            params["id_card"] = id_card
+            params["user_id"] = user_id
+            params["username"] = user_name
+            params["tel"] = tel
+            params["date"] = date
+        case .entrollForSelf(let id, let id_card, let user_id, let user_name, let tel, let date):
+            params["id"] = id
+            params["id_card"] = id_card
+            params["user_id"] = user_id
+            params["username"] = user_name
+            params["tel"] = tel
+            params["date"] = date
+        case .sendEntrollMessage(let tel, let content):
+            params["tel"] = tel
+            params["content"] = content
+        case .recruitmentBrief(let id):
+            params["id"] = id
         default:
             return.requestPlain
         }

@@ -112,6 +112,7 @@ class HistoryRewardListTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = UIColor.hex(hexString: BasicColor)
         label.numberOfLines = 0
+        label.textAlignment = .right
         return label
     }()
     lazy var name:UILabel = {
@@ -148,12 +149,12 @@ class HistoryRewardListTableViewCell: UITableViewCell {
         
         rewardAmount.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
-            make.width.lessThanOrEqualTo(100)
+            make.width.greaterThanOrEqualTo(100)
             make.right.equalToSuperview().offset(-10)
         }
         
         date.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10)
+            make.centerY.equalTo(rewardAmount)
             make.left.equalToSuperview().offset(10)
             make.right.equalTo(rewardAmount.snp.left).offset(-10)
         }

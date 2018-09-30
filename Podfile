@@ -16,4 +16,5 @@ target 'goToWork' do
     pod 'McPicker'
     pod 'EmptyDataSet-Swift'
     pod 'SwiftyJSON'
+    pod 'FSPagerView'
 end

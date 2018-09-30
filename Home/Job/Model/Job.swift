@@ -95,3 +95,24 @@ struct CompanyList:HandyJSON {
     var sort:String?
 }
 
+struct RecruitmentBrief:HandyJSON {
+    var id:String?
+    var company:String?
+    var title:String?
+    var job:String?
+    var address:String?
+    var base_salary:String?
+    var compensation:String?
+    var job_content:String?
+    var work_time:String?
+    var other_welfare:String?
+    var pay_time:String?
+    var eat:String?
+    var live:String?
+    var age:String?
+    var education:String?
+    var sex:String?
+    var experience:String?
+    var other_work:String?
+    var other_admit:String?
+}
