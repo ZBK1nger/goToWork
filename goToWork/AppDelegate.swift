@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window?.rootViewController = tabbarWithNavigationStyle()
         UserDefaults.standard.set("oA5Pi5KB-UlTN4L9dk4TzkaMdecA", forKey: "user_id")
+        window?.makeKeyAndVisible()
         return true
     }
     func applicationWillResignActive(_ application: UIApplication) {

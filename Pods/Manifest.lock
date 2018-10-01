@@ -14,6 +14,9 @@ PODS:
     - Result (~> 3.0)
   - Result (3.2.4)
   - SnapKit (4.0.1)
+  - SwiftMessages (6.0.0):
+    - SwiftMessages/App (= 6.0.0)
+  - SwiftMessages/App (6.0.0)
   - SwiftProgressHUD (0.0.7)
   - SwiftyJSON (4.1.0)
   - Then (2.3.0)
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - MJRefresh
   - Moya
   - SnapKit (~> 4.0.0)
+  - SwiftMessages
   - SwiftProgressHUD
   - SwiftyJSON
   - Then
@@ -45,6 +49,7 @@ SPEC REPOS:
     - Moya
     - Result
     - SnapKit
+    - SwiftMessages
     - SwiftProgressHUD
     - SwiftyJSON
     - Then
@@ -61,10 +66,11 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftMessages: da7c981256a65b3e58022d9027a36584cf4eccf5
   SwiftProgressHUD: 27d2a9fb4e9f356dbbbfd98477916652cc9b7ac1
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   Then: ee21c97b85ff6062b9b0080c9abb1eea46743345
 
-PODFILE CHECKSUM: 199a7c79bd04352ffb531d820f7ec352f1980d04
+PODFILE CHECKSUM: 9ac7a983b8892af1c3ef184a12903bb877b9c90e
 
 COCOAPODS: 1.6.0.beta.1

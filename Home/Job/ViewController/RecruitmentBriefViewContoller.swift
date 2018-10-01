@@ -113,7 +113,7 @@ class RecruitmentBriefViewContoller: BaseViewController {
         ApiRequest(Api.agentState(user_id: user_id as! String), completion: { (response) -> (Void) in
             let json = JSON(parseJSON: response)
             if json["data"]["status"].stringValue == "0" {
-                UNoticeBar(config: UNoticeBarConfig(title: "请先注册经纪人")).show(duration: 2)
+                SwiftMessageViewConfig.show(type: .error, title: "请先注册成为经纪人", body: "")
             }
             else {
                 let entrollViewController = EntrollViewController()
@@ -139,7 +139,7 @@ class RecruitmentBriefViewContoller: BaseViewController {
                 self.navigationController?.pushViewController(entrollViewController, animated: true)
             }
             else {
-                UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 2)
+                SwiftMessageViewConfig.show(type: .error, title: "不可重复报名", body: "")
             }
         }) { (err) in
             print(err)

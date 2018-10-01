@@ -17,4 +17,5 @@ target 'goToWork' do
     pod 'EmptyDataSet-Swift'
     pod 'SwiftyJSON'
     pod 'FSPagerView'
+    pod 'SwiftMessages'
 end

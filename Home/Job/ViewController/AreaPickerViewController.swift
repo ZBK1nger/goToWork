@@ -50,16 +50,6 @@ class AreaPickerViewController: BaseViewController {
     }
     
     func loadData() {
-//        ApiRequest(Api.cityList, completion: { (response) -> (Void) in
-//            let json = JSON(response)
-//            print(json)
-//            //print(json["title"].stringValue)
-//
-//            let title = json["title"].stringValue
-//            print(title)
-//        }) { (error) in
-//            print(error)
-//        }
         ApiLoadingProvider.request(Api.cityList) { (result) in
             switch result {
             case let .success(response):
@@ -167,13 +157,6 @@ extension AreaPickerViewController:UISearchBarDelegate,UITableViewDelegate,UITab
         }
         self.navigationController?.popViewController(animated: true)
     }
-    
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        isSearch = false
-//        searchBar.resignFirstResponder()
-//        tableView.reloadData()
-//    }
-//
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         for cityString in self.cityList {
             if cityString == searchBar.text  {
@@ -181,15 +164,10 @@ extension AreaPickerViewController:UISearchBarDelegate,UITableViewDelegate,UITab
                 self.cityList.append(cityString)
             }
             else {
-                UNoticeBar(config: UNoticeBarConfig(title: "该城市暂未开通")).show(duration: 2)
+               SwiftMessageViewConfig.show(type: .error, title: "该城市暂未开通", body: "")
             }
         }
         tableView.reloadData()
-        //filterBySubstring(filterStr: searchBar.text! as NSString)
     }
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        filterBySubstring(filterStr: searchText as NSString)
-//    }
     
 }

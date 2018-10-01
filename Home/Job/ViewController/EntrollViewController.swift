@@ -67,19 +67,19 @@ extension EntrollViewController:UITableViewDelegate,UITableViewDataSource {
 extension EntrollViewController:EntrollDelegate {
     func submitEntrollInfo(name: String, tel: String, meetingDate: String, idCard: String) {
         if name.isEmpty || tel.isEmpty {
-            UNoticeBar(config: UNoticeBarConfig(title:"姓名或者电话不能为空")).show(duration: 1)
+            SwiftMessageViewConfig.show(type: .error, title: "姓名或者电话不能为空", body: "")
         }
         else if tel.count != 11 {
-            UNoticeBar(config: UNoticeBarConfig(title:"手机号长度有误")).show(duration: 1)
+            SwiftMessageViewConfig.show(type: .error, title: "手机号长度有误", body: "")
         }
         else if !tel.verifyText(type: .PhoneNumber) {
-            UNoticeBar(config: UNoticeBarConfig(title:"请检查手机号码正确性")).show(duration: 1)
+            SwiftMessageViewConfig.show(type: .error, title: "请检查手机号码正确性", body: "")
         }
         else if !idCard.verifyText(type: .IdentityCard) && !idCard.isEmpty {
-            UNoticeBar(config: UNoticeBarConfig(title:"请检查身份证正确性")).show(duration: 1)
+            SwiftMessageViewConfig.show(type: .error, title: "请检查身份证正确性", body: "")
         }
         else if meetingDate.isEmpty {
-            UNoticeBar(config: UNoticeBarConfig(title:"请选择面试时间")).show(duration: 1)
+            SwiftMessageViewConfig.show(type: .error, title: "请选择面试时间", body: "")
         }
         else {
             guard let user_id = UserDefaults.standard.object(forKey: "user_id") else {
@@ -93,10 +93,10 @@ extension EntrollViewController:EntrollDelegate {
                         self.sendMessage(name: name, date: meetingDate, tel: tel)
                     }
                     else if json["date"] == "3" {
-                        UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 1)
+                        SwiftMessageViewConfig.show(type: .error, title: "不可重复报名", body: "")
                     }
                     else {
-                        UNoticeBar(config: UNoticeBarConfig(title:"报名失败")).show(duration: 1)
+                        SwiftMessageViewConfig.show(type: .error, title: "报名失败", body: "")
                     }
                 }) { (err) in
                     print(err)
@@ -110,10 +110,10 @@ extension EntrollViewController:EntrollDelegate {
                         self.sendMessage(name: name, date: meetingDate, tel: tel)
                     }
                     else if json["date"] == "3" {
-                        UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 1)
+                        SwiftMessageViewConfig.show(type: .error, title: "不可重复报名", body: "")                        
                     }
                     else {
-                        UNoticeBar(config: UNoticeBarConfig(title:"报名失败")).show(duration: 1)
+                        SwiftMessageViewConfig.show(type: .error, title: "报名失败", body: "")
                     }
                 }) { (err) in
                     print(err)
@@ -129,13 +129,13 @@ extension EntrollViewController:EntrollDelegate {
             let json = JSON(parseJSON: response)
             print(json)
             if json["res"] == JSON.null {
-                UNoticeBar(config: UNoticeBarConfig(title:"报名成功,请注意查收短信")).show(duration: 2)
+                SwiftMessageViewConfig.show(type: .success, title: "报名成功,请注意查收短信", body: "")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     self.navigationController?.popViewController(animated: true)
                 })
             }
             else {
-                UNoticeBar(config: UNoticeBarConfig(title:"报名成功,短信验证码发送失败")).show(duration: 2)
+                SwiftMessageViewConfig.show(type: .success, title: "报名成功,短信验证码发送失败", body: "")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     self.navigationController?.popViewController(animated: true)
                 })

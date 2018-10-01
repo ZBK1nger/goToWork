@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import SwiftMessages
 class JobDetailViewController: BaseViewController {
     
     public var companyId:String?
@@ -80,7 +81,7 @@ class JobDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "职位详情"
+        //self.title = "职位详情"
         print(companyId ?? "0")
         loadMoreData()
     }
@@ -150,7 +151,7 @@ class JobDetailViewController: BaseViewController {
     }
     //MARK - share Links for others
     @objc func shareJobLinks() {
-        UNoticeBar(config: UNoticeBarConfig(title: "暂不能分享邀请")).show(duration: 2)
+        SwiftMessageViewConfig.show(type: .error, title: "暂不能分享邀请", body: "")
     }
     // MARK - entroll for others
     @objc func entrollForOthers() {
@@ -160,7 +161,7 @@ class JobDetailViewController: BaseViewController {
         ApiRequest(Api.agentState(user_id: user_id as! String), completion: { (response) -> (Void) in
             let json = JSON(parseJSON: response)
             if json["data"]["status"].stringValue == "0" {
-                UNoticeBar(config: UNoticeBarConfig(title: "请先注册经纪人")).show(duration: 2)
+                SwiftMessageViewConfig.show(type: .error, title: "请先注册经纪人", body: "")
             }
             else {
                 let entrollViewController = EntrollViewController()
@@ -186,7 +187,7 @@ class JobDetailViewController: BaseViewController {
                 self.navigationController?.pushViewController(entrollViewController, animated: true)
             }
             else {
-                UNoticeBar(config: UNoticeBarConfig(title:"不可重复报名")).show(duration: 2)
+                SwiftMessageViewConfig.show(type: .error, title: "不可重复报名", body: "")
             }
         }) { (err) in
             print(err)
