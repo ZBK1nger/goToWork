@@ -15,6 +15,7 @@
 		9E72496B215F5F05008DC228 /* RecruitmentBriefViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72496A215F5F05008DC228 /* RecruitmentBriefViewContoller.swift */; };
 		9E72496D216063FB008DC228 /* RecruitmentBriefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E72496C216063FB008DC228 /* RecruitmentBriefTableViewCell.swift */; };
 		9E7249732160CD84008DC228 /* SwiftMessageViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7249722160CD84008DC228 /* SwiftMessageViewConfig.swift */; };
+		9EB048E0216C7AA400EF2C21 /* MineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB048DF216C7AA400EF2C21 /* MineTableViewCell.swift */; };
 		9EC7116D214A0AC2006BBC4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7116C214A0AC2006BBC4B /* AppDelegate.swift */; };
 		9EC7116F214A0AC2006BBC4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC7116E214A0AC2006BBC4B /* ViewController.swift */; };
 		9EC71172214A0AC2006BBC4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC71170214A0AC2006BBC4B /* Main.storyboard */; };
@@ -91,6 +92,7 @@
 		9E72496A215F5F05008DC228 /* RecruitmentBriefViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentBriefViewContoller.swift; sourceTree = "<group>"; };
 		9E72496C216063FB008DC228 /* RecruitmentBriefTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitmentBriefTableViewCell.swift; sourceTree = "<group>"; };
 		9E7249722160CD84008DC228 /* SwiftMessageViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMessageViewConfig.swift; sourceTree = "<group>"; };
+		9EB048DF216C7AA400EF2C21 /* MineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineTableViewCell.swift; sourceTree = "<group>"; };
 		9EC71169214A0AC2006BBC4B /* goToWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goToWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC7116C214A0AC2006BBC4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EC7116E214A0AC2006BBC4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,21 @@
 				9E724961215E1461008DC228 /* DatePickerView.xib */,
 			);
 			path = DatePickerView;
+			sourceTree = "<group>";
+		};
+		9EB048DD216C788600EF2C21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9EB048DF216C7AA400EF2C21 /* MineTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9EB048DE216C788600EF2C21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9EC71160214A0AC2006BBC4B = {
@@ -310,6 +327,8 @@
 		9EC7119F214A0CC6006BBC4B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				9EB048DE216C788600EF2C21 /* Model */,
+				9EB048DD216C788600EF2C21 /* View */,
 				9EC711A7214A2B0C006BBC4B /* Controller */,
 			);
 			path = Mine;
@@ -762,6 +781,7 @@
 				9EC711E6214CCC50006BBC4B /* CompanyListTableViewCell.swift in Sources */,
 				9EC711E0214B5C09006BBC4B /* Job.swift in Sources */,
 				9EC7116D214A0AC2006BBC4B /* AppDelegate.swift in Sources */,
+				9EB048E0216C7AA400EF2C21 /* MineTableViewCell.swift in Sources */,
 				9E724968215E15C4008DC228 /* Date+Extension.swift in Sources */,
 				9EC711DC214A559F006BBC4B /* Api.swift in Sources */,
 				9EC7122321521F83006BBC4B /* Extension+UIButton.swift in Sources */,
