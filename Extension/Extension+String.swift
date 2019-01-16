@@ -34,6 +34,9 @@ extension String {
     func timeIntervalChangeToTimeStr(dateFormat:String?) -> String {
         //如果服务端返回的时间戳精确到毫秒，需要除以1000,否则不需要
         let timeInterval = Double(self)
+        if timeInterval == nil {
+            return "xxxx"
+        }
         let date:NSDate = NSDate.init(timeIntervalSince1970: timeInterval!)
         let formatter = DateFormatter.init()
         if dateFormat == nil {

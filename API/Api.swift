@@ -170,11 +170,11 @@ extension Api:TargetType {
         case .reward:
             return  "/hunter/index.php/Home/Personal/plan_premium"
         case .entrollForOthers:
-            return "/hunter/index.php/Home/Personal/schedule"
+            return ""
         case .entrollForSelf:
-            return "/hunter/index.php/Home/Personal/schedule_geren"
+            return ""
         case .sendEntrollMessage:
-            return "/hunter/sendms"
+            return ""
         case .recruitmentBrief:
             return "/hunter/index.php/Home/XiangQing/demand_details"
         }
